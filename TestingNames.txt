@@ -1,0 +1,81 @@
+﻿{
+  "query": {
+    "first_name": "John",
+    "middle_name": "Robert",
+    "last_name": "Doe",
+    "dob": "1980-05-15",
+    "crime": "Fraud",
+    "ln_code": "LN12345",
+    "line_address": "123 Main St",
+    "city": "Springfield",
+    "state": "IL",
+    "zip_code": "62701",
+    "country": "USA"
+  },
+  "matchedPerson": {
+    "firm": "Acme Bank",
+    "name": {
+      "first": "John",
+      "middle": "R",
+      "last": "Doe"
+    },
+    "dob": "1980-05-15",
+    "ssn_match_strength": "High",
+    "addresses": [
+      {
+        "type": "Residential",
+        "line1": "123 Main St",
+        "city": "Springfield",
+        "region": "IL",
+        "postalCode": "62701",
+        "countryCode": "US"
+      }
+    ]
+  },
+  "cnl": {
+    "name": {
+      "prefix": "Mr.",
+      "first": "John",
+      "middle": "Robert",
+      "last": "Doe",
+      "secondLast": "",
+      "suffix": ""
+    },
+    "scores": [
+      {
+        "scoreName": "CNL Score",
+        "scoreValue": "95"
+      }
+    ],
+    "addresses": [
+      {
+        "address": {
+          "line1": "123 Main St",
+          "line2": "Apt 4B",
+          "city": "Springfield",
+          "stateProvince": "IL",
+          "postalCode": "62701",
+          "countryIsoCode": "US"
+        },
+        "timesReported12Months": [
+          {
+            "year": "2023",
+            "timesReported": "3"
+          }
+        ]
+      }
+    ]
+  },
+  "intellius": [
+    {
+      "first_name": "John",
+      "middle_name": "R",
+      "last_name": "Doe",
+      "age": "46",
+      "address": [
+        "123 Main St, Springfield, IL 62701"
+      ]
+    }
+  ],
+  "request_id": "maestro-123e4567-e89b-12d3-a456-426614174000"
+}
