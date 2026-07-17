@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "request_id": "maestro-123e4567-e89b-12d3-a456-426614174000",
+  "invocation_id": "e-14a12023-e664-472f-8bd4-a5f670ab5ed8",
+  "playbook": "default (strict)",
+  "identity_decision": "HIT",
+  "alert": "NO_ALERT",
+  "disposition": "AUTO_CLEAR",
+  "disposition_reason": "confident decision (non-match, or match with no in-scope adverse news)",
+  "gray_area": false,
+  "gray_area_source": null,
+  "review_packet": null,
+  "subject": {
+    "bank_code": "Acme Bank",
+    "firm_code": "Acme Bank",
+    "first_name": "John",
+    "last_name": "Doe",
+    "dob": "1980-05-15",
+    "location": "Springfield, IL",
+    "ssn_present": true
+  },
+  "agent2_review": {
+    "stage": "identity_adjudication",
+    "agent": "Agent 2 — Playbook Adjudication (on Agent 1 identity match)",
+    "decision": "HIT",
+    "confidence_hit": 1.0,
+    "rationale_hit": "Evidence FOR same person: first_name=exact (+5.9 bits); last_name=exact (+9.8 bits); middle_name=initial (+2.0 bits); dob=exact (+15.0 bits); location=exact (+14.4 bits)",
+    "confidence_no_hit": 0.0,
+    "rationale_no_hit": "Evidence AGAINST: ssn=none (-5.1 bits)",
+    "rule_fired": "R1_name_dob",
+    "vetoes": [],
+    "confidence_thresholds": {
+      "auto_decide": 0.85,
+      "auto_discard": 0.2
+    },
+    "gray_area": false,
+    "review_required": false
+  },
+  "agent3_review": {
+    "stage": "news_screening",
+    "agent": "Agent 3 — Adverse-News Screening (LLM categorization)",
+    "ran": true,
+    "alert": "NO_ALERT",
+    "news_confidence": null,
+    "news_hit_index": null,
+    "news_checked": null,
+    "news_items": [],
+    "gray_area": false,
+    "review_required": false,
+    "note": null
+  }
+}
