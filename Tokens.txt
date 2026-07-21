@@ -1,1 +1,9 @@
 eyJhbGciOiJSUzI1NiIsImtpZCI6IjMwZmUwZTIzYzRkNmUzNmM1MjU3N2IxZTJmZWZkMWFiYzM4ODk1ZGUiLCJ0eXAiOiJKV1QifQ.eyJhdWQiOiJodHRwczovL2xlZ2FsY2hlY2stc3VwZXJ2aXNvci0xOTM5NjE2MTY5OTkudXMtY2VudHJhbDEucnVuLmFwcCIsImF6cCI6IjExNDQxODIwMzkxNDQ3MTY2MTk2NyIsImV4cCI6MTc4NDY3NjI5NSwiaWF0IjoxNzg0NjcyNjk1LCJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJzdWIiOiIxMTQ0MTgyMDM5MTQ0NzE2NjE5NjcifQ.VTKr-m_cgZzrcrDVOB1a-G-FFl8QeDXGW2S15r_HE2GB2cUd-KKnaoZKOGIm1LMfDMsCTvdh8Ug77P-YQCRQE36h9saxgkTXkhtg9cO_EYWVoIyITbd6Rwig1KWewYoC0CtJHjhvBtGoR
+
+
+The URL to POST to (matches the token's audience):
+ 
+https://legalcheck-supervisor-193961616999.us-central1.run.app
+They send the A2A message/send request to that base URL with a trailing slash:
+ 
+POST https://legalcheck-supervisor-193961616999.us-central1.run.app/
