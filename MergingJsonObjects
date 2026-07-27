@@ -1,0 +1,22 @@
+' Settings control how conflicts are resolved during merge
+Dim mergeSettings As New JsonMergeSettings()
+mergeSettings.MergeArrayHandling = MergeArrayHandling.Union       ' combine arrays instead of overwriting them
+mergeSettings.MergeNullValueHandling = MergeNullValueHandling.Ignore ' don't let nulls wipe out existing values
+
+' Start with an empty JObject and merge each source in, in priority order
+' (later merges overwrite earlier ones on matching scalar properties)
+Dim result As New JObject()
+
+If in_subject IsNot Nothing Then
+    result.Merge(in_subject, mergeSettings)
+End If
+
+If in_prospect IsNot Nothing Then
+    result.Merge(in_prospect, mergeSettings)
+End If
+
+If in_screeningRequest IsNot Nothing Then
+    result.Merge(in_screeningRequest, mergeSettings)
+End If
+
+out_JObjectResponse = result
