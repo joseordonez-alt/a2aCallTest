@@ -1,22 +1,38 @@
-' Settings control how conflicts are resolved during merge
-Dim mergeSettings As New JsonMergeSettings()
-mergeSettings.MergeArrayHandling = MergeArrayHandling.Union       ' combine arrays instead of overwriting them
-mergeSettings.MergeNullValueHandling = MergeNullValueHandling.Ignore ' don't let nulls wipe out existing values
+Try
+    ' Settings for how the merge should behave
+    Dim mergeSettings As New JsonMergeSettings()
+    mergeSettings.MergeArrayHandling = MergeArrayHandling.Union
+    mergeSettings.MergeNullValueHandling = MergeNullValueHandling.Ignore
 
-' Start with an empty JObject and merge each source in, in priority order
-' (later merges overwrite earlier ones on matching scalar properties)
-Dim result As New JObject()
+    Dim result As New JObject()
+    Dim mergedAny As Boolean = False
 
-If in_subject IsNot Nothing Then
-    result.Merge(in_subject, mergeSettings)
-End If
+    ' Helper check inline for each source: not Nothing AND has at least one property
+    If in_subject IsNot Nothing AndAlso in_subject.HasValues Then
+        result.Merge(in_subject, mergeSettings)
+        mergedAny = True
+    End If
 
-If in_prospect IsNot Nothing Then
-    result.Merge(in_prospect, mergeSettings)
-End If
+    If in_prospect IsNot Nothing AndAlso in_prospect.HasValues Then
+        result.Merge(in_prospect, mergeSettings)
+        mergedAny = True
+    End If
 
-If in_screeningRequest IsNot Nothing Then
-    result.Merge(in_screeningRequest, mergeSettings)
-End If
+    If in_screeningRequest IsNot Nothing AndAlso in_screeningRequest.HasValues Then
+        result.Merge(in_screeningRequest, mergeSettings)
+        mergedAny = True
+    End If
 
-out_JObjectResponse = result
+    If Not mergedAny Then
+        ' All three inputs were null or empty - return an empty JObject rather than failing
+        out_JObjectResponse = New JObject()
+    Else
+        out_JObjectResponse = result
+    End If
+
+Catch ex As Exception
+    ' Swallow the error safely and fall back to an empty JObject
+    ' (log the message so you can see what went wrong in Studio's Output panel)
+    Console.WriteLine("Error merging JObjects: " & ex.Message)
+    out_JObjectResponse = New JObject()
+End Try
